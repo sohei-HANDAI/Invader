@@ -1,21 +1,61 @@
-<div class="container">
-    <h1>インベーダーゲーム</h1>
-    <canvas id="gameCanvas"></canvas>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>インベーダーゲーム</title>
 
-    <div id="overlay">
-        <div id="message"></div>
-        <div id="controls-info">
-            <h2>操作方法</h2>
-            <p><b>【PC】</b><br>移動: ← → or A D<br>発射: スペースキー</p>
-            <p><b>【スマホ】</b><br>画面下のボタンで操作</p>
+    <!-- スタイルシート(CSS)の読み込み -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PWAマニフェストファイルの読み込み -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- iOS用のアイコン設定（任意） -->
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+</head>
+<body>
+
+    <div class="container">
+        <h1>インベーダーゲーム</h1>
+        <canvas id="gameCanvas"></canvas>
+    
+        <div id="overlay">
+            <div id="message"></div>
+            <div id="controls-info">
+                <h2>操作方法</h2>
+                <p><b>【PC】</b><br>移動: ← → or A D<br>発射: スペースキー</p>
+                <p><b>【スマホ】</b><br>画面下のボタンで操作</p>
+            </div>
+        </div>
+        
+        <button id="startButton">ゲーム開始</button>
+    
+        <div id="touch-controls">
+            <button id="left-btn">◀</button>
+            <button id="fire-btn">FIRE</button>
+            <button id="right-btn">▶</button>
         </div>
     </div>
-    
-    <button id="startButton">ゲーム開始</button>
 
-    <div id="touch-controls">
-        <button id="left-btn">◀</button>
-        <button id="fire-btn">FIRE</button>
-        <button id="right-btn">▶</button>
-    </div>
-</div>
+    <!-- ゲームのロジックを記述したJavaScriptファイルの読み込み -->
+    <!-- ファイル名が app.js の場合は 'script.js' を 'app.js' に変更してください -->
+    <script src="script.js"></script>
+
+    <!-- サービスワーカーを登録するスクリプト -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('サービスワーカーを登録しました:', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('サービスワーカーの登録に失敗しました:', registrationError);
+                    });
+            });
+        }
+    </script>
+
+</body>
+</html>
