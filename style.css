@@ -1,0 +1,115 @@
+body {
+    background-color: #111;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* タッチ操作での画面スクロールを無効化 */
+    overflow: hidden; 
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* キャンバスの幅に合わせる */
+}
+
+h1 {
+    color: #0f0;
+}
+
+canvas {
+    background-color: #000;
+    border: 2px solid #0f0;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+/* メッセージと操作方法を重ねて表示するためのラッパー */
+#overlay {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+#message {
+    font-size: 48px;
+    color: #f00;
+    display: none; /* 最初は非表示 */
+    text-shadow: 2px 2px #000;
+    margin-bottom: 20px;
+}
+
+#controls-info {
+    display: block; /* 最初は表示 */
+    background-color: rgba(0, 50, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #0f0;
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: left;
+    line-height: 1.6;
+}
+#controls-info h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+#startButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #0f0;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#startButton:hover {
+    background-color: #fff;
+}
+
+/* スマホ用操作ボタン */
+#touch-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 400px;
+    margin: 15px auto 0;
+}
+
+#touch-controls button {
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+    background-color: rgba(0, 255, 0, 0.3);
+    color: #fff;
+    border: 2px solid #0f0;
+    border-radius: 50%;
+    user-select: none; /* テキスト選択を防ぐ */
+    -webkit-user-select: none;
+}
+
+#touch-controls button:active {
+    background-color: rgba(0, 255, 0, 0.6);
+}
+
+#fire-btn {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgba(255, 0, 0, 0.3);
+    border-color: #f00;
+}
+#fire-btn:active {
+     background-color: rgba(255, 0, 0, 0.6);
+}
